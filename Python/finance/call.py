@@ -24,3 +24,10 @@ return_deviation = daily_return.std()
 rolling_return = daily_return.rolling(window=20, min_periods=1).mean() #20 day simple rolling avg
 ema = daily_return.ewm(span=20,min_periods=20).mean() # exponential moving average (20 day ema)
 rolling_deviation = daily_return.rolling(window=20, min_periods=1).std() #20 day deviation rolling avg
+
+#visualisations
+close.plot()
+standardised = (close-close.mean())/close.std()
+standardised.plot()
+
+close.plot(subplots=True, layout=(3,2), title = "Example", grid=True)
