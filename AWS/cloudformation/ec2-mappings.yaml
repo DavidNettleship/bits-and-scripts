@@ -1,0 +1,17 @@
+#CloudFormation mappings example
+
+AWSTemplateFormatVersion: "2010-09-09"
+Mappings:
+  RegionMap:
+    us-east-1:
+      "32": "ami-6411e20d"
+      "64": "ami-7a11e213"
+    eu-west-1:
+      "32": "ami-37c2f643"
+      "64": "ami-31c2f645"
+Resources:
+  myEC2Instance:
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageID: !FindInMap [RegionMap, !Ref "AWS::Region", 32]
+      InstanceType: m1.small
